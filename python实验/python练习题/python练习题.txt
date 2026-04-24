@@ -1,0 +1,554 @@
+#1
+# Exercise 1&2
+print(3+1)
+print(3*3)
+print(2**3)
+print("Hello, world!")
+
+# Exercise 3
+print('py'+'thon') # 字符串类型相同，+为字符串直接连接成新的字符串
+print('py'*3+'thon') # 字符串*3即为相同内容重复三次的新字符串，后相加连接
+#print('py'-'py') #打印错误，字符串不能减法计算
+#print('3'+3) #打印错误，字符串和整型数据类型不同
+#print('3'*3) #打印错误，字符串和整型数据类型不同
+#print(a) #打印错误，没有赋值
+a=3 # 给a幅值
+print(a) # a有值，打印成功
+
+# Exercise 4
+print(1==1) # 因为1的值等于1，所以等式成立，打印结果为bool值True
+print(1==True) # 因为bool值True等同于值1，所以1==True等式成立，值为True
+print(0==True) # 因为bool值True等同于值1，所以0==True等式不成立，值为False
+print(0==False) # 因为bool值False等同于值0，所以0==False等式成立，值为True
+print(3==1*3) # *优先级高于==，所以3等于1*3等式成立
+print((3==1)*3) # 3不等于1，故值为False（0），0*3=0
+print((3==3)*4+3==1) # 3等于3成立值为True（1），1*4+3=7不等于1，值为False
+print(3**5 >= 4**4) # 3的五次方小于4的四次方，值为False
+
+# Exercise 5
+print(5/3) # 不能整除，小数值为浮点型，1.6666666666666667
+print(5%3) # 5除3的余数为2
+print(5.0/3) # 浮点型与整型相除，值为浮点型
+print(5/3.0) # 同上
+print(5.2%3) # 浮点型的余数保留原数小数部分
+print(2001 ** 200) #不是浮点型，尚未超出范围
+
+# Exercise 6
+#print(2000.3 ** 200) # 结果太大了，无法打印
+print(1.0+1.0-1.0) # 有浮点型则打印浮点型，小数位到够用即可
+print(1.0+1.0e20-1.0e20) # 1.0和1.0e20先相加，因为1e20过大把1忽略了，导致结果为1e20-1e20=0
+print(1e20-1e20+1) # 1.0e20和1.0e20先相减，相等消除=0，再加1就正常打印1
+
+# Exercise 7
+a='John Doe'
+print('hello,'+a)
+
+# Exercise 8
+print(float(123)) # 整型强制转换为浮点型
+print(float('123')) # 字符串强制转换为浮点型
+print(float('123.23')) # 字符串（字符为浮点型数字）强制转换为浮点型
+print(int(123.23))  # 浮点型强制转换为整型
+#print(int('123.23')) # 以10为基数的int()无效字面量:'123.23'，无法将字符为浮点型数字的字符串强制转换为整型
+print(int(float('123.23'))) # 将字符串（字符为浮点型数字）强制转换为浮点型，然后再把浮点型强制转换为整型
+print(str(12)) # 整型强制转换为字符串
+print(str(12.2)) # 浮点型强制转换为字符串
+print(bool('a')) # 字符串强制转换为bool型,非0非空，为True
+print(bool(0)) # 整型强制转换为bool型，为整型0，为False
+print(bool(0.1)) # 浮点型强制转换为bool型，0.1非0，为False
+
+# Exercise 9
+def hello_world():
+    print('Hello, world!')
+def hello_name(name):
+    print('Hello,{0}'.format(name))
+def hello_name2(name):
+    return 'Hello,'+ name
+hello_name('CJH')
+print(hello_name2('CJH'))
+# 打印只是在def函数执行时打印内容，并没有返回结果，def函数没有返回值
+# return是def函数的返回值，但执行函数的时候不会打印出来，需要print函数打印def函数的返回值
+
+# Exercise 10
+def count(x):
+    return 3*(x**2)-x+2
+print("result:",count(10))
+#2
+# Exercise 1
+def max_a(x,y):
+    if(x>y):
+        y=x
+    else:
+        pass
+    return y
+def max_b(x,y):
+    if(x>y):
+        y=x
+    if(y>=x):
+        pass
+    return y
+a=input('请输入两个数：')
+b=input()
+print('较大的数是：{0}'.format(max_a(a,b)))
+
+# Exercise 2
+for i in range(0,101):
+    print(i,end=" ")
+print()
+for i in range(0,101):
+    if i%7==0:
+        print(i,end=" ")
+print()
+for i in range(1,101):
+    if i%5==0 and i%3!=0:
+        print(i,end=" ")
+print()
+
+for i in range(2,21):
+    j=2
+    while(j<i):
+        if i%j==0:
+            print(j,end=" ")
+        j+=1
+print()
+
+# Exercise 3
+x=1
+lst=[]
+a=0
+while(a<20):
+    if x%5==0 and x%7==0 and x%11==0: # 数字性质要求
+        lst.append(x) # 添加到列表
+        a+=1
+    x+=1
+print(lst)
+
+# Exercise 4
+x=103.0
+if x%1==0 and x>0: # x为正整数
+    print(x, end=" ")
+    while (x != 1): # 直到序列出现1为止
+        if x % 2:
+            x = 3 * x + 1
+        else:
+            x = x / 2
+        print(x, end=" ")
+else:
+    print("x不符合要求")
+print()
+
+# Exercise 5
+lst = [1,2,3,4]
+a = 0
+for i in lst: # 对i循环
+    for j in lst: # 对j循环
+        for k in lst: # 对k循环
+            for r in lst: # 对r循环
+                if i != j and i != k and i!=r and j != k and j!=r and k!=r :
+                    print(i, j, k, r)
+                    a += 1
+print("共有 {0} 个".format(a))
+#3
+# Exercise 1
+print('Exercise 1')
+def printlst(lst):
+    for item in lst:
+        print(item,end=" ")
+    print()
+def printlst_rev(lst):
+    for item in lst[::-1]:
+        print(item,end=" ")
+    print()
+
+lst1=[1,2,3,4,'python']
+printlst(lst1)
+printlst_rev(lst1)
+
+def len1(lst):
+    i=0
+    for item in lst:
+        i+=1
+    print('列表有{0}个元素'.format(i))
+len1(lst1)
+
+# Exercise 2
+print('Exercise 2')
+b=lst1 # 第1种赋值法
+print("lst",lst1,"b",b)
+b[1]=666
+print("lst",lst1,"b",b) # b的第二个元素变了，lst1也跟着b变了
+c=lst1[:] # 第2种赋值法
+c[2]='abc'
+print("lst",lst1,"c",c) # c的第三个元素变了，但lst1没有跟着c变
+def set_first_elem_to_zero(l):
+    l[0]=0
+    return l
+print("def",set_first_elem_to_zero(lst1))
+print("origin",lst1) # 随着函数里的形参变化，实参也变了，因为列表为可变数据
+
+# Exercise 3
+print('Exercise 3')
+def is_prime(n):
+    if n>1:
+        for item in range(2,n):
+            if n%item==0:
+                break
+        else:
+            return True
+        return False
+    else:
+        return'非大于1的整数'
+print("7", is_prime(7))
+print("10", is_prime(10))
+
+def print_prime(n):
+    lst=[]
+    a=0
+    for i in range(2,n+1):
+        if is_prime(i):
+            lst.append(i)
+            a+=1
+    print(lst)
+print_prime(11)
+
+def print_prime2(n):
+    lst=[]
+    a=0
+    for i in range(2,1000):
+        if is_prime(i):
+            lst.append(i)
+            a+=1
+            if a>=n:
+                break
+    print(lst)
+print_prime2(7)
+
+# Exercise 4
+from numpy import *
+print('Exercise 4')
+def Collatz(x):
+    lst=[]
+    print(isinstance(x, int))
+    if isinstance (x,int) and x > 0:
+        while x != 1:  # 直到序列出现1为止
+            if x % 2:
+                x = 3 * x + 1
+                lst.append(x)
+            else:
+                x = x / 2
+                lst.append(x)
+        print(lst)
+    else:
+        print("x不符合要求")
+    print()
+number = int(input("please input a number:"))
+Collatz(number)
+
+# Exercise 5
+print('Exercise 5')
+def sort_insert(a,ys):
+    ys.append(a)
+    ys.sort()
+    print(ys)
+lst1=[5,20,8,16]
+sort_insert(9,lst1)
+#4
+# Exercise 1
+print('Exercise 1')
+x = [i for i in range(10)]
+y = [i for i in range(2, 21, 2)]
+print('x:', x, 'y:', y)
+print('(x,y)', list(zip(x, y)))  # zip函数压缩
+a1, a2 = zip(*zip(x, y))  # zip(*)为解压
+print('x:', list(a1))
+print('y:', list(a2))
+
+# Exercise 2
+print('Exercise 2')
+def l1_distance(x, y):# 曼哈顿距离
+    n = len(x)
+    distance = 0
+    for i in range(n):
+        distance += abs(x[i] - y[i])
+    return distance
+
+import math
+def l2_distance(x, y):# 欧式距离
+    n = len(x)
+    distance = 0
+    for i in range(n):
+        distance += (x[i] - y[i]) ** 2
+    return math.sqrt(distance)
+print('x=(3,4,1),y=(1,5,2)') # 三维向量
+print('l1:', l1_distance((3,4,1),(1,5,2)))
+print('l2:', l2_distance((3,4,1),(1,5,2)))
+
+# Exercise 3
+print('Exercise 3')
+def dict2(lst):
+    my_dict = {}
+    for i in lst:
+        if i in my_dict:
+            my_dict[i] += 1
+        else:
+            my_dict[i] = 1
+    return my_dict
+
+lst1 = [5, 2, 3, 4, 2, 3, 5, 2, 2]
+print('dict:', dict2(lst1))
+
+# Exercise 4
+print('Exercise 4')
+def find_key_by_values(dct, value): # 找到所有的关联键
+    # 使用字典推导式查找关联键
+    keys = [key for key, val in dct.items() if val == value]
+    # 找到关联键则返回
+    if keys:
+        return keys
+    # 如果没有找到关联键，则返回 None
+    else:
+        return None
+
+def find_key_by_value(dic, a): # 返回第一个关联键
+    for item in dic:
+        if dic[item] == a:
+            return item
+            break
+    else:
+        return None
+
+dic1 = {'张三': 1, '王五': 2, '李四': 3, 'a': 3, "B": 4}
+print('value:', find_key_by_value(dic1, 3))
+print('numerical list(values):', find_key_by_values(dic1, 3))
+
+# Exercise 5
+print('Exercise 5')
+# 密集向量相加
+def dense_vector_add(v1, v2): # 都是列表
+    if len(v1) != len(v2):
+        raise ValueError("Vectors must have the same length")
+    return [v1[i] + v2[i] for i in range(len(v1))]
+# (密集)向量相乘(即内积)
+def dense_vector_mult(v1, v2):
+    if len(v1) != len(v2):
+        raise ValueError("Vectors must have the same length")
+    return sum([v1[i] * v2[i] for i in range(len(v1))])
+# 稀疏向量相加
+def sparse_vector_add(s1, s2): # 都是字典
+    values1 = list(s1.values()) # 值视图
+    keys1 = list(s1.keys()) # 键视图
+    values2 = list(s2.values())
+    keys2 = list(s2.keys())
+    # 字典对应向量（列表）的初始化
+    v1 = [i*0 for i in range(keys1[-1]+1)]
+    v2 = [i*0 for i in range(keys2[-1]+1)]
+    for item in range(keys1[-1]+1): # 锁定向量长度
+        if item == keys1[0] : # 找到非零值
+            v1[item] = values1[0] # 幅值非零值
+            keys1.pop(0) # 更新键视图
+            values1.pop(0) # 更新值视图
+        else:
+            v1[item] = 0 # 其他的元素都为0
+    # 同上
+    for item in range(keys2[-1]+1):
+        if item == keys2[0]:
+            v2[item] = values2[0]
+            keys2.pop(0)
+            values2.pop(0)
+        else:
+            v2[item] = 0
+    if len(v1) != len(v2):
+        raise ValueError("Vectors must have the same length")
+    return [v1[i] + v2[i] for i in range(len(v1))]
+# 稀疏向量相乘
+def sparse_vector_multiply(s1, s2):
+    # 同sparse_vector_add内一致
+    values1 = list(s1.values())
+    keys1 = list(s1.keys())
+    values2 = list(s2.values())
+    keys2 = list(s2.keys())
+    v1 = [i * 0 for i in range(keys1[-1] + 1)]
+    v2 = [i * 0 for i in range(keys2[-1] + 1)]
+    for item in range(keys1[-1] + 1):
+        if item == keys1[0]:
+            v1[item] = values1[0]
+            keys1.pop(0)
+            values1.pop(0)
+        else:
+            v1[item] = 0
+    for item in range(keys2[-1] + 1):
+        if item == keys2[0]:
+            v2[item] = values2[0]
+            keys2.pop(0)
+            values2.pop(0)
+        else:
+            v2[item] = 0
+    if len(v1) != len(v2):
+        raise ValueError("Vectors must have the same length")
+    return sum([v1[i] * v2[i] for i in range(len(v1))])
+# 稀疏向量和稠密向量相加
+def sparse_dense_vector_add(s1, v2):
+    # 同sparse_vector_add内一致
+    values1 = list(s1.values())
+    keys1 = list(s1.keys())
+    v1 = [i * 0 for i in range(keys1[-1] + 1)]
+    for item in range(keys1[-1] + 1):
+        if item == keys1[0]:
+            v1[item] = values1[0]
+            keys1.pop(0)
+            values1.pop(0)
+        else:
+            v1[item] = 0
+    if len(v1) != len(v2):
+        raise ValueError("Vectors must have the same length")
+    return [v1[i] + v2[i] for i in range(len(v2))]
+# 稀疏向量和稠密向量相乘
+def sparse_dense_vector_multiply(s1, v2):
+    # 同sparse_vector_add内一致
+    values1 = list(s1.values())
+    keys1 = list(s1.keys())
+    v1 = [i * 0 for i in range(keys1[-1] + 1)]
+    for item in range(keys1[-1] + 1):
+        if item == keys1[0]:
+            v1[item] = values1[0]
+            keys1.pop(0)
+            values1.pop(0)
+        else:
+            v1[item] = 0
+    if len(v1) != len(v2):
+        raise ValueError("Vectors must have the same length")
+    return sum([v1[i] * v2[i] for i in range(len(v2))])
+# 稠密向量
+vect1 = [i for i in range(10,30,2)]
+vect2 = [i*i for i in range(10)]
+print('密集向量相加',dense_vector_add(vect1,vect2))
+print('密集向量相乘',dense_vector_mult(vect1,vect2))
+# 稀疏向量
+sparse1 = {0:1, 5:2, 8:3, 9:4}
+sparse2 = {0:1, 1:2, 5:4, 9:8}
+print('稀疏向量相加',sparse_vector_add(sparse1,sparse2))
+print('稀疏向量相乘',sparse_vector_multiply(sparse1,sparse2))
+print('稀疏向量和稠密向量加',sparse_dense_vector_add(sparse1,vect2))
+print('稀疏向量和稠密向量相乘',sparse_dense_vector_multiply(sparse1,vect2))
+#5
+# Exercise 1
+print('Exercise 1')
+def my_f1(x): # 连续函数
+    return (x-0.5)**2-16
+
+def root(f, a, b): # 求root函数
+    c=0
+    if f(a) == 0:
+        return a
+    elif f(b) == 0:
+        return b
+    elif f(a) * f(b) > 0: # 判断是否为相同符号
+        # raise ValueError("函数值具有相同符号")
+        return "函数值具有相同符号"
+    if b < a: # 转换标准大小关系
+        a, b=b, a
+    while abs(f(c)-0) > 1e-7: # 设定求根截止数:1e-6
+        c = (a + b) / 2  # 二分法求值
+        if f(c) == 0:
+            return c
+        elif f(c) < 0:
+            a = c
+        else:
+            b = c
+    return (a + b) / 2
+# 测试
+print('a=2,b=10.0,c:',root(my_f1,2,10.0))
+print('a=2.5,b=10.0,c:',root(my_f1,2.5,10.0))
+print('a=5,b=10,c:',root(my_f1,5,10))
+print('a=4.5,b=5,c:',root(my_f1,4.5,5))
+print('a=7,b=2,c:',root(my_f1,7,2))
+
+# Exercise 2
+print('Exercise 2')
+def root2(f,a,b): # 函递归求root数
+    if f(a) == 0:
+        return a
+    elif f(b) == 0:
+        return b
+    elif f(a) * f(b) > 0: # 判断是否为相同符号
+        return "函数值具有相同符号"
+    if b < a:
+        a, b = b, a # 转换标准大小关系
+    c = (a + b) / 2 # 二分法求值
+    if f(c) == 0 or abs(f(c)-0) < 1e-7: # 截止条件：c等于0或偏差小于1e-6
+        return c
+    elif f(c) < 0:
+        a = c
+    else:
+        b = c
+    return root2(f, a, b) # 递归
+# 测试
+print('a=2.5,b=10,c:',root2(my_f1,2.5,10))
+#6
+# Exercise 1
+print('Exercise 1')
+def print_file(filename):
+    with open(filename, 'r') as f: # 只读
+        for line in f:
+            print(line.rstrip()) # 删除 string 字符串末尾的空格
+print_file('文本.txt')
+
+# Exercise 2
+print('Exercise 2')
+# 设计函数，使列表转为键为字符串，值为出现数的字典
+def dict2(lst):
+    my_dict = {}
+    for i in lst:
+        if i in my_dict: # 如果有则值加1
+            my_dict[i] += 1
+        else:
+            my_dict[i] = 1
+    return my_dict
+# Find the 20 most common words
+with open('文本.txt', 'r') as file:
+    text = file.read().lower().split() # 读取，小写化，空格切分字符串（单词）
+# 传递sorted函数的key参数实现对字典的值进行排序
+text_sort = sorted(dict2(text).items(),key=lambda x: x[1], reverse=True)
+# 取前20个
+text_sort = text_sort[0:20]
+# 列显示
+for item in text_sort:
+    print(item)
+
+# Find how many unique words are used
+with open('文本.txt', 'r') as file:
+    text = file.read().lower().split() # 读取，小写化，空格切分字符串（单词）
+unique_words = set(text) # 转为集合（去重）
+num_unique_words = len(unique_words) # 计算长度（数量）
+print('how many unique words are used:',num_unique_words)
+
+# Find how many words are used at least 5 times
+with open('文本.txt', 'r') as file:
+    text = file.read().lower().split() # 读取，小写化，空格切分字符串（单词）
+num_words_at_least_5 = 0
+for count in dict2(text).values(): # 读取字典的值
+    if count >= 5: # 判断是否大于5
+        num_words_at_least_5 += 1
+print('how many words are used at least 5 times:',num_words_at_least_5)
+
+# Write the 40 most common words, and their counts, to a file
+with open('文本.txt', 'r') as file:
+    text = file.read().lower().split()
+# 传递sorted函数的key参数实现字典数据的排序
+text_sort = sorted(dict2(text).items(),key=lambda x: x[1], reverse=True)
+# 取前40个
+top_40 = text_sort[0:40]
+with open('counts.txt', 'w') as file:
+    for word, count in top_40:
+        file.write(f'{word}: {count}\n') # 格式化写入
+
+# Exercise 3
+print('Exercise 3')
+# 读取原文本文件
+with open('文本.txt', 'r') as file:
+    content = file.read()
+# 转换大小写
+converted_content = content.swapcase()
+# 保存到新文件
+with open('Result.txt', 'w') as file:
+    file.write(converted_content)
+#7
